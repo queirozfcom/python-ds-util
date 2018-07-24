@@ -73,34 +73,3 @@ class ToDummiesTransformer(BaseEstimator, TransformerMixin):
 
     def fit(self, X, y=None, **fitparams):
         return self
-
-
-class SelectColumnsTransfomer(BaseEstimator, TransformerMixin):
-    """ Select dataframe columns
-    """
-
-    def __init__(self, columns=None, ravel=None):
-
-        if columns is None:
-            self.columns = []
-        elif type(columns) is not list:
-            self.columns = [columns]
-        else:
-            self.columns = columns
-
-        if ravel is None:
-            self.ravel = False
-        else:
-            self.ravel = ravel
-
-    def transform(self, X, **transform_params):
-
-        cpy_df = X[self.columns].copy()
-
-        if self.ravel:
-            return cpy_df.values.ravel()
-        else:
-            return cpy_df
-
-    def fit(self, X, y=None, **fit_params):
-        return self
