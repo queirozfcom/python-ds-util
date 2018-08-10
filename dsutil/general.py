@@ -3,6 +3,14 @@
 import pandas as pd
 from sklearn.base import BaseEstimator, TransformerMixin
 
+class ToDenseTransformer(BaseEstimator,TransformerMixin):
+    # here you define the operation it should perform
+    def transform(self, X, y=None, **fit_params):
+        return X.todense()
+
+    # just return self
+    def fit(self, X, y=None, **fit_params):
+        return self
 
 class SelectColumnsTransfomer(BaseEstimator, TransformerMixin):
     """ Select dataframe columns
