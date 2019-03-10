@@ -2,4 +2,4 @@
 
 [![PyPI version](https://badge.fury.io/py/dsutil.png)](https://badge.fury.io/py/dsutil)
 
-For examples, on how to use it, view the 
+For usage examples see notebooks under [the examples directory](https://github.com/queirozfcom/python-ds-util/tree/master/examples).
