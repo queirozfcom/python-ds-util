@@ -2,8 +2,8 @@
 
 import matplotlib.pyplot as plt
 
-def plot_value_labels(ax=None, format=None):
 
+def plot_value_labels(ax=None, format=None):
     if ax is None:
         ax = plt.gca()
 
@@ -11,6 +11,9 @@ def plot_value_labels(ax=None, format=None):
         format = '{:,}'
 
     rects = ax.patches
+
+    if len(rects) == 0:
+        raise Exception('Right now this method only works for bar charts')
 
     # For each bar: Place a label
     for rect in rects:
@@ -26,32 +29,41 @@ def plot_value_labels(ax=None, format=None):
 
         # If value of bar is negative: Place label below bar
         if y_value < 0:
-            # Invert space to place label below
-            space *= -1
             # Vertically align label at top
             va = 'top'
 
         # Create annotation
+        ax.annotate(label, (x_value, y_value),
+                    xytext=(0, 2),
+                    textcoords="offset points",
+                    ha='center',
+                    rotation=45,
+                    va=va)
 
-        ax.annotate(label, (x_value, y_value), 
-                      xytext=(0, 2), 
-                      textcoords="offset points", 
-                      ha='center', 
-                      rotation=45, 
-                      va=va)    
 
-
-def format_yaxis_as_percentage(ax=None):
-
+def format_yaxis_percentage(ax=None, fmt=None):
     if ax is None:
         ax = plt.gca()
 
-    vals = ax.get_yticks()
-    ax.set_yticklabels(['{:,.0%}'.format(x) for x in vals])
+    if fmt is None:
+        fmt = '{:,.0%}'
+
+    current_values = ax.get_yticks()
+    ax.set_yticklabels([fmt.format(x) for x in current_values])
 
 
-def add_grid(ax=None):
+def format_yaxis_thousands(ax=None, fmt=None):
+    if ax is None:
+        ax = plt.gca()
 
+    if fmt is None:
+        fmt = '{:,}'
+
+    current_values = ax.get_yticks()
+    ax.set_yticklabels([fmt.format(x) for x in current_values])
+
+
+def add_grid(ax=None, line_width=None):
     if ax is None:
         ax = plt.gca()
 
@@ -61,8 +73,9 @@ def add_grid(ax=None):
     # select both y axis and x axis
     gridlines = ax.get_xgridlines() + ax.get_ygridlines()
 
-    # choose line width
-    line_width = 0.7
+    if line_width is None:
+        # choose line width
+        line_width = 0.7
 
     for line in gridlines:
         line.set_linestyle(':')
