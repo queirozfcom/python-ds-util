@@ -45,26 +45,26 @@ def plot_value_labels(ax=None, format=None):
                     va=va)
 
 
-def format_yaxis_percentage(ax=None, fmt=None):
+def format_yaxis_percentage(ax=None, format=None):
     if ax is None:
         ax = plt.gca()
 
-    if fmt is None:
-        fmt = '{:,.0%}'
+    if format is None:
+        format = '{:,.0%}'
 
     current_values = ax.get_yticks()
-    ax.set_yticklabels([fmt.format(x) for x in current_values])
+    ax.set_yticklabels([format.format(x) for x in current_values])
 
 
-def format_yaxis_thousands(ax=None, fmt=None):
+def format_yaxis_thousands(ax=None, format=None):
     if ax is None:
         ax = plt.gca()
 
-    if fmt is None:
-        fmt = '{:,.0f}'
+    if format is None:
+        format = '{:,.0f}'
 
     current_values = ax.get_yticks()
-    ax.set_yticklabels([fmt.format(x) for x in current_values])
+    ax.set_yticklabels([format.format(x) for x in current_values])
 
 
 def add_grid(ax=None, line_width=None):
