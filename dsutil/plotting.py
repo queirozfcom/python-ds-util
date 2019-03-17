@@ -61,7 +61,7 @@ def format_yaxis_thousands(ax=None, fmt=None):
         ax = plt.gca()
 
     if fmt is None:
-        fmt = '{:,}'
+        fmt = '{:,.0f}'
 
     current_values = ax.get_yticks()
     ax.set_yticklabels([fmt.format(x) for x in current_values])
