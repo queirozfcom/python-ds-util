@@ -170,7 +170,7 @@ def calibration_accuracy_plot(
     ax2 = ax.twinx()
     slack_x = 0.05  # must be half the width of one bucket
     ax2.plot(averages_by_bucket[:, 0] + slack_x, averages_by_bucket[:, 1],
-             linewidth=0.8,
+             linewidth=2.0,
              linestyle='solid',
              marker='o',
              color=secondary_color,
