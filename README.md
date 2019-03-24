@@ -6,6 +6,4 @@ For usage examples see notebooks under [the examples directory](https://github.c
 
 ## Installation
 
-```
-pip install dsutil
-```
+`pip install dsutil`
