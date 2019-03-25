@@ -7,7 +7,7 @@ import numpy as np
 from sklearn.metrics import confusion_matrix
 
 
-def plot_value_labels(ax=None, fmt=None, rotation=None, **kwargs):
+def add_value_labels(ax=None, fmt=None, rotation=None, **kwargs):
     # backwards compatibility
     if kwargs.get('format', None) is not None:
         fmt = kwargs['format']
@@ -198,7 +198,7 @@ def calibration_accuracy_plot(y_true,
     ax.set_yticklabels(['{:.0f}'.format(x) for x in ax.get_yticks()], color=main_color)
 
     if plot_values_for_buckets:
-        plot_value_labels(ax=ax, fmt='{:,.0f}', rotation=0)
+        add_value_labels(ax=ax, fmt='{:,.0f}', rotation=0)
 
     if plot_values_for_accuracies:
         # not using plotting.plot_value_labels because I need to plot the percentage values
