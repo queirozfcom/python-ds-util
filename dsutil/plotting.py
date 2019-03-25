@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 
+import itertools
+
 import matplotlib.pyplot as plt
 import numpy as np
+from sklearn.metrics import confusion_matrix
 
 
 def plot_value_labels(ax=None, fmt=None, rotation=None, **kwargs):
@@ -82,12 +85,11 @@ def plot_value_labels(ax=None, fmt=None, rotation=None, **kwargs):
         raise ValueError('Right now this method only works for bar charts and for line charts.')
 
 
-def calibration_accuracy_plot(
-        y_true,
-        y_pred,
-        ax=None,
-        plot_values_for_buckets=None,
-        plot_values_for_accuracies=None):
+def calibration_accuracy_plot(y_true,
+                              y_pred,
+                              ax=None,
+                              plot_values_for_buckets=None,
+                              plot_values_for_accuracies=None):
     if y_true.shape != y_pred.shape:
         raise ValueError(
             'Expected y_true and y_pred to have the same shapes, got {} and {}'.format(y_true.shape, y_pred.shape))
@@ -229,6 +231,77 @@ def calibration_accuracy_plot(
     ax.set_xticks(score_bins_with_endpoint)
 
     plt.show()
+
+
+def plot_confusion_matrix(y_true,
+                          y_pred,
+                          class_names,
+                          ax=None,
+                          cmap=None,
+                          colorbar=None,
+                          include_labels=None,
+                          normalize=None,
+                          show=None):
+    if y_true.shape != y_pred.shape:
+        raise ValueError(
+            'Expected y_true and y_pred to have the same shapes, got {} and {}'.format(y_true.shape, y_pred.shape))
+
+    if ax is None:
+        plt.clf()
+        ax = plt.gca()
+
+    if cmap is None:
+        cmap = plt.cm.Blues
+
+    if colorbar is None:
+        colorbar = False
+
+    if include_labels is None:
+        include_labels = True
+
+    if normalize is None:
+        normalize = False
+
+    if show is None:
+        show = True
+
+    matrix = confusion_matrix(y_true, y_pred)
+
+    if normalize:
+        fmt = '.2f'
+        matrix = matrix.astype('float') / matrix.sum(axis=1)[:, np.newaxis]
+    else:
+        fmt = 'd'
+
+    ax.xaxis.tick_top()
+    ax.xaxis.set_label_position('top')
+
+    img = ax.imshow(matrix, interpolation='nearest', cmap=cmap)
+
+    if colorbar:
+        ax.get_figure().colorbar(img)
+
+    if include_labels:
+        thresh = matrix.max() / 2.
+        for i, j in itertools.product(range(matrix.shape[0]), range(matrix.shape[1])):
+            ax.text(j, i, format(matrix[i, j], fmt),
+                    horizontalalignment="center",
+                    color="white" if matrix[i, j] > thresh else "black")
+
+    tick_marks = np.arange(len(class_names))
+    ax.set_xticks(tick_marks)
+    ax.set_xticklabels(class_names, rotation=45)
+
+    ax.set_yticks(tick_marks)
+    ax.set_yticklabels(class_names)
+
+    ax.set_ylabel('True label', size=14)
+    ax.set_xlabel('Predicted label', size=14)
+
+    if show:
+        plt.show()
+    else:
+        return ax
 
 
 def format_yaxis_percentage(ax=None, fmt=None):
