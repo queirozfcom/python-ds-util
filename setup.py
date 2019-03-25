@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="dsutil",
-    version="0.1.0",
+    version="0.1.1",
     author="Felipe Almeida",
     author_email="queirozfcom@gmail.com",
     description="Collection of utils for making your life easier when using the Python data science stack",
