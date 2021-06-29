@@ -16,12 +16,7 @@ For full usage examples see notebooks under [the examples directory](https://git
 
 - `add_grid()`: reasonable default grid, with weak grey lines:
    
-    <div class="img-div" markdown="1" style="float:left;">
-    ![before](https://i.imgur.com/7ZnSaZq.png)
-    *BEFORE*
-    </div>
-    &nbsp;&nbsp;
-    <div class="img-div" markdown="1" style="float:left;">
-    ![after](https://i.imgur.com/vOq2ZMZ.png)
-    *AFTER*
-    </div>
+<p align="center">
+  <img src="https://i.imgur.com/7ZnSaZq.png" height="150">
+  <img src="https://i.imgur.com/vOq2ZMZ.png" height="150">
+</p>
