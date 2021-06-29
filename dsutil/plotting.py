@@ -3,6 +3,7 @@
 import itertools
 
 import matplotlib.pyplot as plt
+import matplotlib.ticker as mticker
 import numpy as np
 from sklearn.metrics import confusion_matrix
 
@@ -308,8 +309,7 @@ def format_yaxis_percentage(ax=None, fmt=None):
     if fmt is None:
         fmt = '{:,.0%}'
 
-    current_values = ax.get_yticks()
-    ax.set_yticklabels([fmt.format(x) for x in current_values])
+    _format_yaxis(ax, fmt)
 
 
 def format_yaxis_thousands(ax=None, fmt=None):
@@ -319,8 +319,7 @@ def format_yaxis_thousands(ax=None, fmt=None):
     if fmt is None:
         fmt = '{:,.0f}'
 
-    current_values = ax.get_yticks()
-    ax.set_yticklabels([fmt.format(x) for x in current_values])
+    _format_yaxis(ax, fmt)
 
 
 def add_grid(ax=None, line_width=None):
@@ -340,6 +339,12 @@ def add_grid(ax=None, line_width=None):
     for line in gridlines:
         line.set_linestyle(':')
         line.set_linewidth(line_width)
+
+
+def _format_yaxis(ax, fmt):
+    current_values = ax.get_yticks()
+    ax.yaxis.set_major_locator(mticker.FixedLocator(current_values))
+    ax.set_yticklabels([fmt.format(x) for x in current_values])
 
 
 def _build_label_params_from_yvalue(y_value, absolute_distance_in_points):
