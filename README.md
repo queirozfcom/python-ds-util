@@ -58,6 +58,7 @@ Full examples for plotting here: [https://github.com/queirozfcom/python-ds-util/
 
 - `format_yaxis_percentage()`: turns values between 0 and 1 in y-axis into percentages
 
+  ```python
   import numpy as np
   import matplotlib.pyplot as plt
   from dsutil import format_yaxis_percentage
@@ -78,6 +79,7 @@ Full examples for plotting here: [https://github.com/queirozfcom/python-ds-util/
 
 - `format_yaxis_thousands()`: uses commas as thousands separator in the y-axis labels
 
+  ```python
   import numpy as np
   import matplotlib.pyplot as plt
   from dsutil import format_yaxis_thousands
