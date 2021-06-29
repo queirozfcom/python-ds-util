@@ -16,7 +16,19 @@ For full usage examples see notebooks under [the examples directory](https://git
 
 - `add_grid()`: reasonable default grid settings, with weak grey lines, light alpha, etc.
    
+  ```python
+  import numpy as np
+  import matplotlib.pyplot as plt
+  from dsutil import add_grid
+  
+  x = np.linspace(0.0,100,10)
+  y = np.random.uniform(low=0,high=10,size=10)
+
+  plt.bar(x,y)
+  add_grid()
+  ```
+   
 <p align="center">
-  <img src="https://i.imgur.com/7ZnSaZq.png" width="400">
-  <img src="https://i.imgur.com/vOq2ZMZ.png" width="400">
+  <img src="https://i.imgur.com/7ZnSaZq.png" width="350">
+  <img src="https://i.imgur.com/vOq2ZMZ.png" width="350">
 </p>
