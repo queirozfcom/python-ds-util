@@ -16,14 +16,12 @@ For full usage examples see notebooks under [the examples directory](https://git
 
 - `add_grid()`: reasonable default grid, with weak grey lines:
    
-  <div class="img-div clearfix" markdown="1" style="display: flex;justify-content:space-between;">
     <div class="img-div" markdown="1" style="float:left;">
-    ![alt text](https://i.imgur.com/7ZnSaZq.png)
+    ![before](https://i.imgur.com/7ZnSaZq.png)
     *BEFORE*
     </div>
     &nbsp;&nbsp;
     <div class="img-div" markdown="1" style="float:left;">
-    ![alt text](https://i.imgur.com/vOq2ZMZ.png)
+    ![after](https://i.imgur.com/vOq2ZMZ.png)
     *AFTER*
     </div>
-  </div>   
