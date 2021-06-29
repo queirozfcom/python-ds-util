@@ -10,4 +10,4 @@ The library is available on **pip**:
 
 ## Examples
 
-For usage examples see notebooks under [the examples directory](https://github.com/queirozfcom/python-ds-util/tree/master/examples).
+For full usage examples see notebooks under [the examples directory](https://github.com/queirozfcom/python-ds-util/tree/master/examples).
