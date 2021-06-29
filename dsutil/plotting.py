@@ -306,8 +306,15 @@ def format_yaxis_percentage(ax=None, fmt=None):
     if ax is None:
         ax = plt.gca()
 
-    if fmt is None:
+    current_ticks = ax.get_yticks()
+
+    all_within_0_and_1 = all((0.0 <= elem <= 1.0) for elem in current_ticks.tolist())
+
+    if fmt is None and all_within_0_and_1:
         fmt = '{:,.0%}'
+    elif fmt is None and (not all_within_0_and_1):
+        # otherwise just add a simple '%' to the string
+        fmt = '{:.0f}%'
 
     _format_yaxis(ax, fmt)
 
@@ -343,6 +350,8 @@ def add_grid(ax=None, line_width=None):
 
 def _format_yaxis(ax, fmt):
     current_values = ax.get_yticks()
+
+    # see https://stackoverflow.com/questions/63723514/userwarning-fixedformatter-should-only-be-used-together-with-fixedlocator
     ax.yaxis.set_major_locator(mticker.FixedLocator(current_values))
     ax.set_yticklabels([fmt.format(x) for x in current_values])
 
