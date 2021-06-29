@@ -14,6 +14,8 @@ For full usage examples see notebooks under [the examples directory](https://git
 
 ### Plotting
 
+Full examples for plotting here: [https://github.com/queirozfcom/python-ds-util/tree/master/examples/examples-plotting.ipynb]
+
 - `add_grid()`: reasonable default grid settings, with weak grey lines, light alpha, etc.
    
   ```python
