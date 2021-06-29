@@ -17,7 +17,7 @@ def add_value_labels(ax=None, fmt=None, rotation=None, **kwargs):
         ax = plt.gca()
 
     if fmt is None:
-        fmt = '{:,.0f}'
+        fmt = '{:,.1f}'
 
     if rotation is None:
         rotation = 0

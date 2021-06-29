@@ -46,9 +46,9 @@ Full examples for plotting here: [https://github.com/queirozfcom/python-ds-util/
   x = np.linspace(0.0,100,10)
   y = np.random.uniform(low=0,high=10,size=10)
 
-  plt.bar(x,y,width=1.0)
+  plt.bar(x,y)
   
-  add_value_labels(format='{:.1f}')
+  add_value_labels()
   ```
    
 <p align="center">
