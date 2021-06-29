@@ -17,6 +17,6 @@ For full usage examples see notebooks under [the examples directory](https://git
 - `add_grid()`: reasonable default grid, with weak grey lines:
    
 <p align="center">
-  <img src="https://i.imgur.com/7ZnSaZq.png" height="150">
-  <img src="https://i.imgur.com/vOq2ZMZ.png" height="150">
+  <img src="https://i.imgur.com/7ZnSaZq.png" width="350">
+  <img src="https://i.imgur.com/vOq2ZMZ.png" width="350">
 </p>
