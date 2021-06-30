@@ -64,10 +64,7 @@ def add_value_labels(ax=None, fmt=None, rotation=None, **kwargs):
         for (x_value, y_value) in zip(xs, ys):
 
             # maybe the value is an integer not a float
-            if isinstance(y_value, (int, np.integer)):
-                label = integer_fmt.format(y_value)
-            else:
-                label = fmt.format(y_value)
+            label = _build_label_from_yvalue(y_value, integer_fmt, fmt)
 
             va, ytext = _build_label_params_from_yvalue(y_value, absolute_distance_in_points)
 
@@ -181,8 +178,9 @@ def calibration_accuracy_plot(y_true,
     ax2.set_ylim(0, 1.0)
     ax2.set_yticks(np.arange(0, 1.0, 0.1))
     ax2.yaxis.set_major_locator(plt.LinearLocator(numticks=num_ticks))
-    ax2.set_yticklabels(['{:.0f}%'.format(x * 100 // 1) for x in ax2.get_yticks()], color=secondary_color)
-
+    current_values_ax2 = ax2.get_yticks()
+    ax2.yaxis.set_major_locator(mticker.FixedLocator(current_values_ax2))
+    ax2.set_yticklabels(['{:.0f}%'.format(x * 100 // 1) for x in current_values_ax2], color=secondary_color)
     ax2.set_ylabel(y_label_right, color=secondary_color)
 
     # CONFIGURE LEFT AXIS
@@ -192,8 +190,11 @@ def calibration_accuracy_plot(y_true,
     slack_y = 1.15
     ax.set_ylim(0, int(max_value_left_axis * slack_y))
     ax.set_yticks(np.arange(0, max_value_left_axis))
+
     ax.yaxis.set_major_locator(plt.LinearLocator(numticks=num_ticks))
-    ax.set_yticklabels(['{:.0f}'.format(x) for x in ax.get_yticks()], color=main_color)
+    current_values_ax1 = ax.get_yticks()
+    ax.yaxis.set_major_locator(mticker.FixedLocator(current_values_ax1))
+    ax.set_yticklabels(['{:.0f}'.format(x) for x in current_values_ax1], color=main_color)
 
     if plot_values_for_buckets:
         add_value_labels(ax=ax, fmt='{:,.0f}', rotation=0)
