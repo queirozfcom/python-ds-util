@@ -16,8 +16,8 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     install_requires=[
         'matplotlib>=2.0.0,<4.0.0',
-        'pandas>=0.20.0,<1.0.0',
-        'scikit-learn>=0.20.0,<1.0.0'
+        'pandas>=0.20.0',
+        'scikit-learn>=0.20.0'
     ],
     url="https://github.com/queirozfcom/python-ds-util",
     packages=setuptools.find_packages(),

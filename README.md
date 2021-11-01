@@ -21,7 +21,7 @@ Full examples for plotting [here](https://github.com/queirozfcom/python-ds-util/
   ```python
   import numpy as np
   import matplotlib.pyplot as plt
-  from dsutil import add_grid
+  from dsutil.plotting import add_grid
   
   x = np.linspace(0.0,100,10)
   y = np.random.uniform(low=0,high=10,size=10)
@@ -41,7 +41,7 @@ Full examples for plotting [here](https://github.com/queirozfcom/python-ds-util/
   ```python
   import numpy as np
   import matplotlib.pyplot as plt
-  from dsutil import add_value_labels
+  from dsutil.plotting import add_value_labels
   
   x = np.linspace(0.0,100,10)
   y = np.random.uniform(low=0,high=10,size=10)
@@ -61,7 +61,7 @@ Full examples for plotting [here](https://github.com/queirozfcom/python-ds-util/
   ```python
   import numpy as np
   import matplotlib.pyplot as plt
-  from dsutil import format_yaxis_percentage
+  from dsutil.plotting import format_yaxis_percentage
   
   x = np.linspace(0.0,100,10)
   y = np.random.uniform(low=0,high=1,size=10)
@@ -82,7 +82,7 @@ Full examples for plotting [here](https://github.com/queirozfcom/python-ds-util/
   ```python
   import numpy as np
   import matplotlib.pyplot as plt
-  from dsutil import format_yaxis_thousands
+  from dsutil.plotting import format_yaxis_thousands
   
   x = np.linspace(0.0,100,10)
   y = np.random.uniform(low=10000,high=100000,size=10)
